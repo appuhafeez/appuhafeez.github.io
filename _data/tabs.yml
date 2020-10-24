@@ -28,8 +28,3 @@
   icon: "fas fa-info"
   path: tabs
   url: about
--
-  name: "Projects"
-  icon: "fas fa-info"
-  path: tabs
-  url: projects

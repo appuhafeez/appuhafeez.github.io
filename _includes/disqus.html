@@ -6,23 +6,13 @@
   © 2019 Cotes Chung
   MIT License
 -->
-
-<div id="disqus" class="pt-2 pb-2">
-  <p class="font-italic text-center text-muted small">
-    Comments powered by <a href="https://disqus.com/">Disqus</a>.
-  </p>
+<div style="background-color: white;">
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous"
+    src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v8.0&appId=824917704978414&autoLogAppEvents=1"
+    nonce="G1yQxrSG"></script>
+    <div class="fb-like" data-href="{{site.url}}{{ page.url }}" data-width="800" data-layout="standard" data-action="like" data-size="small" data-share="true"></div>
+  <div class="fb-comments" data-href="{{site.url}}{{ page.url }}" data-numposts="3" data-width="700"
+    data-colorscheme="dark"></div>
 </div>
-
-<script src="{{ site.baseurl }}/assets/js/lib/jquery.disqusloader.min.js"></script>
-<script>
-  var options = {
-    scriptUrl: '//{{ site.disqus.shortname }}.disqus.com/embed.js',
-
-    disqusConfig: function() {
-      this.page.url = '{{ site.url | append: site.baseurl | append: page.url }}';
-      this.page.identifier = '{{ page.url }}';
-    }
-  };
-
-  $.disqusLoader('#disqus', options);
-</script>
+</div>

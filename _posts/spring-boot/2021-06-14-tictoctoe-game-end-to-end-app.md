@@ -23,7 +23,8 @@ In this tutorial iam going to show how can a tipical microservice architecture c
 ## Architecture
 Archiecture i thought of before starting the project
 
-![Desktop View](/assets/img/post_images/spring-boot-project-tictoctoe/architecture-design.PNG)
+![Desktop View](/assets/img/post_images/how-extract-java-code-from-apk/spring-boot-architecture-design.PNG)
+spring-boot-project-tictoctoe
 
 ## Github repositories
 1. [Angular frontend](https://github.com/appuhafeez/tik-tok-toe-frontend)

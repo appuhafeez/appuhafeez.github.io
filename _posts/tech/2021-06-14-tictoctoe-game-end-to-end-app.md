@@ -1,5 +1,5 @@
 ---
-title: TicTocToe Game end to end Application
+title: tictoctoe game end to end app
 author: Hafeez SHAIK
 date: 2021-06-14 14:24:00 +0530
 categories: [Tech,Tutorial,spring]

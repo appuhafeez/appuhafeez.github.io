@@ -9,7 +9,7 @@ const repoName = process.env.GHP_BASE || '';
 
 export default defineConfig({
   plugins: [react()],
-  base: repoName, // e.g., "/my-blog/"; set via env: GHP_BASE=/my-blog/
+  base: '/', // e.g., "/my-blog/"; set via env: GHP_BASE=/my-blog/
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"), // ✅ maps @ → src

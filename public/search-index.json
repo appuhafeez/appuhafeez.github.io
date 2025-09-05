@@ -1,0 +1,23 @@
+[
+  {
+    "slug": "hello-world",
+    "title": "Hello World",
+    "text": "\r\nWelcome to my blog! This post shows **Markdown** features.\r\n## Code block\r\n\r\n~~~typescript\r\nfunction greet(name: string) {\r\n  return `Hello, ${name}!`;\r\n}\r\nconsole.log(greet('world'));\r\n~~~\r\nInline code like `const x = 42` adapts to theme.",
+    "tags": [
+      "intro",
+      "hello"
+    ],
+    "category": "general"
+  },
+  {
+    "slug": "tutorials-react-vite-setup",
+    "title": "Vite Setup for React",
+    "text": "\r\nThis file lives in a nested folder, and the generator picks it up automatically.\r\n\r\n### Steps\r\n\r\n1. Install dependencies\r\n2. Run dev server\r\n3. Enjoy hot reload\r\n---\r\n\r\n## Deployment notes\r\n\r\n1. **Set base path** for GitHub Pages:\r\n   - If deploying to `https://<user>.github.io/<repo>/`, set env before build: `GHP_BASE=/<repo>/`.\r\n   - For user/organization page (`https://<user>.github.io/`), leave it blank.\r\n2. **Build & deploy**:\r\n```bash\r\nnpm i\r\nGHP_BASE=/<repo>/ npm run build   # or just n",
+    "tags": [
+      "react",
+      "vite",
+      "tooling"
+    ],
+    "category": "tutorials"
+  }
+]

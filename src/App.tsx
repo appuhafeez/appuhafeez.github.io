@@ -92,7 +92,7 @@ function TopBar({ toggleLeft }: { toggleLeft: () => void }) {
         <button className="lg:hidden px-3 py-2 rounded-xl bg-white/60 dark:bg-slate-800/60" onClick={toggleLeft}>
           ☰
         </button>
-        <Link to="/" className="font-extrabold text-xl">My Blog</Link>
+        <Link to="/" className="font-extrabold text-xl">Blog by Hafeez Shaik</Link>
       </div>
       <div className="flex items-center gap-2">
         <Link to="/" className="px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-700">Search</Link>

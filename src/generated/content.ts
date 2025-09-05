@@ -23,7 +23,7 @@ export const posts = [
     ],
     "category": "tutorials",
     "created": "2025-08-22T00:00:00.000Z",
-    "updated": "2025-09-05T12:29:51.064Z",
+    "updated": "2025-09-05T13:04:13.948Z",
     "raw": "\r\nThis file lives in a nested folder, and the generator picks it up automatically.\r\n\r\n### Steps\r\n\r\n1. Install dependencies\r\n2. Run dev server\r\n3. Enjoy hot reload\r\n---\r\n\r\n## Deployment notes\r\n\r\n1. **Set base path** for GitHub Pages:\r\n   - If deploying to `https://<user>.github.io/<repo>/`, set env before build: `GHP_BASE=/<repo>/`.\r\n   - For user/organization page (`https://<user>.github.io/`), leave it blank.\r\n2. **Build & deploy**:\r\n```bash\r\nnpm i\r\nGHP_BASE=/<repo>/ npm run build   # or just npm run build for user page\r\nnpm run deploy\r\n```\r\n   This publishes `dist/` to the `gh-pages` branch via the `gh-pages` package.\r\n3. Or use **GitHub Actions** (add `.github/workflows/gh-pages.yml`):",
     "excerpt": "This file lives in a nested folder, and the generator picks …"
   }

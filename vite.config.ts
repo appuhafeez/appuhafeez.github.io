@@ -4,7 +4,7 @@ import path from "path";
 
 
 // Set base to "/<REPO_NAME>/" for GitHub Pages (user/organization pages can use "/")
-const repoName = process.env.GHP_BASE || 'appuhafeez.github.io';
+const repoName = process.env.GHP_BASE || '';
 
 
 export default defineConfig({

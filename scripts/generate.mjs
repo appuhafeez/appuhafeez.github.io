@@ -9,7 +9,7 @@ import rehypeStringify from "rehype-stringify";
 const postsDir = path.join(process.cwd(), "content");
 const outDir = path.join(process.cwd(), "src/generated");
 const publicDir = path.join(process.cwd(), "public");
-const postDir = path.join(publicDir, "#/posts");
+const postDir = path.join(publicDir, "posts");
 
 fs.mkdirSync(outDir, { recursive: true });
 fs.mkdirSync(publicDir, { recursive: true });
@@ -125,7 +125,7 @@ const html = `<!DOCTYPE html>
 </html>`;
 
 // write into public/about.html
-fs.writeFileSync(path.join(publicDir,`#/about.html`), html);
+fs.writeFileSync(path.join(publicDir,`about.html`), html);
 
 
 // Write TypeScript content file

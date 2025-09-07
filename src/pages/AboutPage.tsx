@@ -5,7 +5,7 @@ import remarkGfm from "remark-gfm"; // for tables, strikethrough, etc.
 import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/github.css";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism"; // pick a theme
+import { okaidia } from "react-syntax-highlighter/dist/esm/styles/prism"; // pick a theme
 import { Helmet } from 'react-helmet-async';
 
 // About is a special pseudo-post generated from /content/about.md
@@ -67,7 +67,7 @@ export default function AboutPage() {
                                     PreTag="div"
                                     children={codeString}
                                     language={match[1]}
-                                    style={oneDark}
+                                    style={okaidia}
                                     showLineNumbers={true}
                                     wrapLongLines={true}
                                 />

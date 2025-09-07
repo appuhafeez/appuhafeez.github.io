@@ -66,6 +66,20 @@ const TableOfContents: React.FC<Props> = ({ content }) => {
         <a
           key={h.id}
           href={`#${h.id}`}
+          onClick={(e) => {
+            e.preventDefault();
+        
+            // scroll to heading
+            document.getElementById(h.id)?.scrollIntoView({ behavior: "smooth" });
+        
+            // preserve the current route's hash path (e.g., "#/blog")
+            const baseHash = window.location.hash.split("#")[1]?.split("?")[0] || "";
+            const [routePart] = baseHash.startsWith("/") ? [baseHash] : [""];
+            
+            // update hash to include both route and section
+            const newHash = routePart ? `${routePart}#${h.id}` : `#${h.id}`;
+            window.location.hash = newHash;
+          }}
           className={`block ml-${(h.level - 1) * 4} ${
             activeId === h.id ? "text-blue-600 font-bold" : "text-gray-600"
           }`}

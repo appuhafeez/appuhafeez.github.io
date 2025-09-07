@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { Link, Route, Routes, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
 import { ThemeProvider, useTheme } from './theme';
 import { posts as generatedPosts } from './generated/content';
 import Home from './pages/Home';

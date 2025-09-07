@@ -2,7 +2,7 @@
   {
     "slug": "hello-world",
     "title": "Hello World",
-    "text": "\r\nWelcome to my blog! This post shows **Markdown** features.\r\n## Code block\r\n\r\n~~~typescript\r\nfunction greet(name: string) {\r\n  return `Hello, ${name}!`;\r\n}\r\nconsole.log(greet('world'));\r\n~~~\r\nInline code like `const x = 42` adapts to theme.",
+    "text": "\nWelcome to my blog! This post shows **Markdown** features.\n## Code block\n\n~~~typescript\nfunction greet(name: string) {\n  return `Hello, ${name}!`;\n}\nconsole.log(greet('world'));\n~~~\nInline code like `const x = 42` adapts to theme.",
     "tags": [
       "intro",
       "hello"
@@ -12,7 +12,7 @@
   {
     "slug": "tutorials-react-vite-setup",
     "title": "Vite Setup for React",
-    "text": "\r\nThis file lives in a nested folder, and the generator picks it up automatically.\r\n\r\n### Steps\r\n\r\n1. Install dependencies\r\n2. Run dev server\r\n3. Enjoy hot reload\r\n---\r\n\r\n## Deployment notes\r\n\r\n1. **Set base path** for GitHub Pages:\r\n   - If deploying to `https://<user>.github.io/<repo>/`, set env before build: `GHP_BASE=/<repo>/`.\r\n   - For user/organization page (`https://<user>.github.io/`), leave it blank.\r\n2. **Build & deploy**:\r\n```bash\r\nnpm i\r\nGHP_BASE=/<repo>/ npm run build   # or just n",
+    "text": "\nThis file lives in a nested folder, and the generator picks it up automatically.\n\n### Steps\n\n1. Install dependencies\n2. Run dev server\n3. Enjoy hot reload\n---\n\n## Deployment notes\n\n1. **Set base path** for GitHub Pages:\n   - If deploying to `https://<user>.github.io/<repo>/`, set env before build: `GHP_BASE=/<repo>/`.\n   - For user/organization page (`https://<user>.github.io/`), leave it blank.\n2. **Build & deploy**:\n```bash\nnpm i\nGHP_BASE=/<repo>/ npm run build   # or just npm run build for u",
     "tags": [
       "react",
       "vite",

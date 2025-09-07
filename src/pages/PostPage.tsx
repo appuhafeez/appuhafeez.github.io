@@ -5,7 +5,7 @@ import remarkGfm from "remark-gfm"; // for tables, strikethrough, etc.
 import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/github.css";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { oneDark, oneLight } from "react-syntax-highlighter/dist/esm/styles/prism"; // pick a theme
+import { okaidia, prism } from "react-syntax-highlighter/dist/esm/styles/prism"; // pick a theme
 import { posts } from '@/generated/content';
 import { useTheme } from './../theme';
 import { Helmet } from "react-helmet-async";
@@ -132,7 +132,7 @@ export default function PostPage() {
                                 <div style={{ maxWidth: "100vw", overflowX: "auto" }}>
                                     <SyntaxHighlighter
                                         language={match[1]}
-                                        style={theme === 'light' ? oneLight : oneDark}
+                                        style={theme === 'light' ? prism : okaidia}
                                         showLineNumbers={true}
                                         wrapLongLines={false}
                                         wrapLines={false}

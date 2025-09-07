@@ -9,9 +9,16 @@ import rehypeStringify from "rehype-stringify";
 const postsDir = path.join(process.cwd(), "content");
 const outDir = path.join(process.cwd(), "src/generated");
 const publicDir = path.join(process.cwd(), "public");
+const postDir = path.join(publicDir, "posts");
 
 fs.mkdirSync(outDir, { recursive: true });
 fs.mkdirSync(publicDir, { recursive: true });
+
+// clean old blog HTML files
+if (fs.existsSync(postDir)) {
+  fs.rmSync(postDir, { recursive: true, force: true });
+}
+fs.mkdirSync(postDir, { recursive: true });
 
 function walk(dir, fileList = []) {
   for (const file of fs.readdirSync(dir)) {
@@ -60,6 +67,67 @@ for (const file of files) {
 // ✅ exclude "about"
 const filtered = posts.filter((p) => p.slug !== "about");
 const filtered_about = posts.filter((p) => p.slug === "about");
+
+for (const post of filtered) {
+  const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>${post.title}</title>
+  <meta property="og:title" content="${post.title}" />
+  <meta property="og:description" content="${post.excerpt}" />
+  <meta property="og:image" content="https://appuhafeez.github.io/og-default.png" />
+  <meta property="og:url" content="https://appuhafeez.github.io/#/posts/${post.slug}" />
+  <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script>
+    // Redirect normal users to SPA route
+    window.location.replace("/#/posts/${post.slug}");
+  </script>
+</head>
+<body>
+  <noscript>
+    <a href="/#/posts/${post.slug}">View post</a>
+  </noscript>
+</body>
+</html>`;
+
+  // write into public/posts/[slug].html
+  fs.mkdirSync(postDir, { recursive: true });
+  fs.writeFileSync(path.join(postDir, `${post.slug}.html`), html);
+}
+
+console.log(`✅ Generated ${filtered.length} post's social statuses`);
+
+const about_section = filtered_about[0];
+
+const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>${about_section.title}</title>
+  <meta property="og:title" content="${about_section.title}" />
+  <meta property="og:description" content="${about_section.excerpt}" />
+  <meta property="og:image" content="https://appuhafeez.github.io/og-default.png" />
+  <meta property="og:url" content="https://appuhafeez.github.io/#/${about_section.slug}" />
+  <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script>
+    // Redirect normal users to SPA route
+    window.location.replace("/#/posts/${about_section.slug}");
+  </script>
+</head>
+<body>
+  <noscript>
+    <a href="/#/posts/${about_section.slug}">View post</a>
+  </noscript>
+</body>
+</html>`;
+
+// write into public/about.html
+fs.writeFileSync(path.join(publicDir,`about.html`), html);
+
+
 // Write TypeScript content file
 fs.writeFileSync(
   path.join(outDir, "content.ts"),

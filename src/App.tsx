@@ -34,6 +34,7 @@ function LeftPanel({ onClose }: { onClose?: () => void }) {
         <ul className="list-disc ml-6">
           <li><a href="https://github.com/appuhafeez" target="_blank">GitHub</a></li>
           <li><a href="https://www.linkedin.com/in/shaik--hafeez/" target="_blank">LinkedIn</a></li>
+          <li><a href="mailto:appuhafeez833@gmail.com">Email Me</a></li>
         </ul>
       </div>
       

@@ -1,16 +1,12 @@
 import React, { useEffect, useMemo } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm"; // for tables, strikethrough, etc.
-import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/github.css";
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { okaidia, prism } from "react-syntax-highlighter/dist/esm/styles/prism"; // pick a theme
 import { posts } from '@/generated/content';
 import { useTheme } from './../theme';
 import { Helmet } from "react-helmet-async";
 import { Post } from '@/types';
 import Giscus from '@giscus/react';
+import MdDisplayer from './MdDisplayer';
 
 export default function PostPage() {
     const { theme, toggle } = useTheme();
@@ -18,31 +14,8 @@ export default function PostPage() {
     const post = useMemo(() => posts.find(p => p.slug === slug), [slug]);
     if (!post) return <div className="p-4">Post not found.</div>;
 
-
     const shareUrl = typeof window !== 'undefined' ? window.location.href.replace('/#/','/') : '';
     const shareText = encodeURIComponent(`${post.title}`);
-
-    function slugify(str: string) {
-        return str
-            .toLowerCase()
-            .replace(/[^\w]+/g, "-")
-            .replace(/^-+|-+$/g, "");
-    }
-
-
-    function flattenChildrenToString(children: any): string {
-        if (typeof children === "string") {
-            return children;
-        }
-        if (Array.isArray(children)) {
-            return children.map(flattenChildrenToString).join("");
-        }
-        if (children && typeof children === "object" && "props" in children) {
-            return flattenChildrenToString(children.props.children);
-        }
-        return "";
-    }
-
 
     const shareLinks = [
         { label: 'X/Twitter', href: `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${shareText}` },
@@ -96,66 +69,7 @@ export default function PostPage() {
                 </div>
                 {/*<div dangerouslySetInnerHTML={{ __html: post.html }} />*/}
 
-                <ReactMarkdown
-                    remarkPlugins={[remarkGfm]}
-                    rehypePlugins={[rehypeHighlight]}
-                    components={{
-                        h1: ({ children }) => (
-                            <h1 id={slugify(flattenChildrenToString(children))}>{children}</h1>
-                        ),
-                        h2: ({ children }) => (
-                            <h2 id={slugify(flattenChildrenToString(children))}>{children}</h2>
-                        ),
-                        h3: ({ children }) => (
-                            <h3 id={slugify(flattenChildrenToString(children))}>{children}</h3>
-                        ),
-                        h4: ({ children }) => (
-                            <h4 id={slugify(flattenChildrenToString(children))}>{children}</h4>
-                        ),
-                        h5: ({ children }) => (
-                            <h5 id={slugify(flattenChildrenToString(children))}>{children}</h5>
-                        ),
-                        h6: ({ children }) => (
-                            <h6 id={slugify(flattenChildrenToString(children))}>{children}</h6>
-                        ),
-                        ol: ({ children }) => (
-                            <ol className="list-decimal ml-6">{children}</ol>
-                        ),
-                        ul: ({ children }) => (
-                            <ul className="list-disc ml-6">{children}</ul>
-                        ),
-                        code(props) {
-                            const { children, className, node, ...rest } = props
-                            const match = /language-(\w+)/.exec(className || '')
-                            const codeString = flattenChildrenToString(children)
-                            return match ? (
-                                <div style={{ maxWidth: "100vw", overflowX: "auto" }}>
-                                    <SyntaxHighlighter
-                                        language={match[1]}
-                                        style={theme === 'light' ? prism : okaidia}
-                                        showLineNumbers={true}
-                                        wrapLongLines={false}
-                                        wrapLines={false}
-                                        PreTag="div" // 👈 replace <pre> with <div>
-                                        customStyle={{
-                                            margin: 0,
-                                            padding: "1rem",
-                                            overflowX: "auto",
-                                            boxSizing: "border-box",
-                                            whiteSpace: "pre", // don’t wrap
-                                        }}
-                                    >{codeString}</SyntaxHighlighter>
-                                </div>
-                            ) : (
-                                <code {...rest} className={className}>
-                                    {children}
-                                </code>
-                            )
-                        },
-                    }}
-                >
-                    {post.raw}
-                </ReactMarkdown>
+              <MdDisplayer content={post.raw}/>
                 <Giscus 
                     id="comments"
                     repo="appuhafeez/appuhafeez.github.io"

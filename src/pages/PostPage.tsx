@@ -19,7 +19,7 @@ export default function PostPage() {
     if (!post) return <div className="p-4">Post not found.</div>;
 
 
-    const shareUrl = typeof window !== 'undefined' ? window.location.href : '';
+    const shareUrl = typeof window !== 'undefined' ? window.location.href.replace('/#/','/') : '';
     const shareText = encodeURIComponent(`${post.title}`);
 
     function slugify(str: string) {

@@ -5,8 +5,11 @@ import "highlight.js/styles/github.css";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { useTheme } from './../theme';
 import { okaidia, prism } from "react-syntax-highlighter/dist/esm/styles/prism"; // pick a theme
+import { useMediaQuery } from 'react-responsive';
 
 export default function MdDisplayer({content=''}) {
+
+    const isMobile = useMediaQuery({ maxWidth: 768 });
 
     const { theme, toggle } = useTheme();
 
@@ -65,7 +68,7 @@ export default function MdDisplayer({content=''}) {
                     const match = /language-(\w+)/.exec(className || '')
                     const codeString = flattenChildrenToString(children)
                     return match ? (
-                        <div style={{ maxWidth: "100vw", overflowX: "auto" }}>
+                        <div style={{ maxWidth: isMobile ? "100vw" : "55vw", overflowX: "auto" }}>
                             <SyntaxHighlighter
                                 language={match[1]}
                                 style={theme === 'light' ? prism : okaidia}

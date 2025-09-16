@@ -18,6 +18,44 @@
       if (preferred === 'dark') document.documentElement.classList.add('dark');
     })();
   </script>
+  <script>
+  (function () {
+    try {
+      var saved = sessionStorage.getItem('lastHash');
+      if (!saved) return;
+      var obj = JSON.parse(saved);
+      var savedHash = obj && obj.hash;
+      var savedTs = obj && obj.ts;
+      if (!savedHash) return;
+
+      // if current page already has hash, do nothing
+      if (window.location.hash && window.location.hash !== '') return;
+
+      // Check if navigation was a reload (Navigation Timing API) OR
+      // referrer looks like Google/ads (optional)
+      var navType = null;
+      try {
+        var navEntries = performance.getEntriesByType && performance.getEntriesByType('navigation');
+        navType = navEntries && navEntries[0] && navEntries[0].type;
+      } catch(e) { /* ignore */ }
+
+      var isReload = navType === 'reload' || (performance.navigation && performance.navigation.type === 1);
+      var ref = document.referrer || '';
+      var fromGoogle = /google|googlesyndication|doubleclick/.test(ref);
+
+      // only restore for recent saved hashes (avoid old stale redirects)
+      var recent = Date.now() - (savedTs || 0) < 10 * 60 * 1000; // 10 minutes
+
+      if ((isReload || fromGoogle) && recent) {
+        var newUrl = window.location.pathname + window.location.search + savedHash;
+        // replace so we don't create extra history entries
+        window.location.replace(newUrl);
+      }
+    } catch (e) {
+      // fail silently
+    }
+  })();
+  </script>
 </head>
 
 <body class="bg-day dark:bg-night text-slate-800 dark:text-slate-100 transition-colors">

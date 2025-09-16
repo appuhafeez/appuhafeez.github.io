@@ -11,6 +11,8 @@ import NotFound from './pages/NotFound';
 import { Post } from './types';
 import { profile_data } from './generated/SideData';
 import TableOfContents from './pages/TableOfContents';
+import AdSense from './pages/AdSense';
+import useSaveHash from './hooks/useSaveHash'
 
 function LeftPanel({ onClose }: { onClose?: () => void }) {
   return (
@@ -66,13 +68,6 @@ function RightPanel({ current }: { current?: Post | null }) {
           )}
         </ul>
       </div>
-      <div className="bg-gradient-to-br from-brand-500 to-amber-400 p-4 rounded-2xl shadow-soft text-white">
-        <p className="text-sm opacity-90 mb-1">Advertisement</p>
-        <div className="bg-white/15 rounded-xl p-3">
-          <p className="font-semibold">Your Ad Here</p>
-          <p className="text-sm opacity-90">Promote a product or add an affiliate widget.</p>
-        </div>
-      </div>
       <div className="bg-white/60 dark:bg-slate-800/60 backdrop-blur p-4 rounded-2xl shadow-soft">
           <div>
             { !current &&(
@@ -80,6 +75,11 @@ function RightPanel({ current }: { current?: Post | null }) {
             )}
             { current && (<TableOfContents content={current.raw} />)}
           </div>
+      </div>
+      <div className="bg-gradient-to-br from-brand-500 to-amber-400 p-4 rounded-2xl shadow-soft text-white">
+        <div className="bg-white/15 rounded-xl p-3">
+          <AdSense slot='987654321' />
+        </div>
       </div>
     </aside>
   );
@@ -110,6 +110,7 @@ function TopBar({ toggleLeft }: { toggleLeft: () => void }) {
 }
 
 export default function App() {
+  useSaveHash()
   const location = useLocation();
   const isPost = location.pathname.startsWith('/posts/');
   const [leftOpen, setLeftOpen] = useState(false);

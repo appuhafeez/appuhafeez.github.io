@@ -11,7 +11,7 @@ updated: 2026-03-11
 
 ### The Intelligence Briefing for People Who Build with AI
 
-**March 9–15, 2026** · Published by [@genaiweekly](https://instagram.com/genaiweekly)
+**March 9–15, 2026** · Published by [@art.by.techie](https://instagram.com/art.by.techie)
 
 ---
 
@@ -149,4 +149,4 @@ The pace isn't slowing down. We'll be here next week.
 
 ---
 
-_© Gen AI Weekly · March 9–15, 2026 · @genaiweekly_
+\_© Gen AI Weekly · March 9–15, 2026 · @@art.by.techie

@@ -1,8 +1,8 @@
 ---
 id: Weekly News 11th March 2026
 title: Weekly News 11th March 2026
-tags: [LLM, GenAI, Embeddings]
-category: llm-from-scratch
+tags: [LLM, GenAI, news]
+category: weekly-geni-ai-new
 created: 2026-03-11
 updated: 2026-03-11
 ---

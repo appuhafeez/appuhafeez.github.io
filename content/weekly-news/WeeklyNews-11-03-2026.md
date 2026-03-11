@@ -1,6 +1,6 @@
 ---
 id: Weekly News 11th March 2026
-title: Build LLM from scratch Part 2 (Embeddings)
+title: Weekly News 11th March 2026
 tags: [LLM, GenAI, Embeddings]
 category: llm-from-scratch
 created: 2026-03-11
